@@ -1,0 +1,17 @@
+<div class="container">
+    <form fxLayout='column'  fxLayoutAlign='center center' [formGroup]='loginForm' (ngSubmit)='onSubmit()'>
+        <mat-form-field>
+            <input matInput type='email' placeholder="Enter Your Email" formControlName='Email' required>
+            <mat-hint *ngIf="loginForm.get('Email').pristine">Email Cannot be Empty</mat-hint>
+            <mat-error>Not a Valid Email</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input #pwd matInput [type]="visible?'text':'password'" placeholder="Enter Your Password" formControlName='Password' required>
+            <mat-icon matSuffix (click)='visilePwd()'>{{visible?'visibility_on':'visibility_off'}}</mat-icon>
+            <mat-hint align='start'>Minimum of 6 Characters</mat-hint>
+            <mat-hint align='end'>{{loginForm.value?.Password?.length}}/6</mat-hint>
+        </mat-form-field>
+        <button type='submit' color='primary' mat-raised-button 
+         [disabled]="loginForm.invalid" >Submit</button>
+    </form>
+</div>

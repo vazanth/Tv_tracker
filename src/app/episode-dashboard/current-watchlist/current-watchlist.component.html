@@ -1,0 +1,42 @@
+<section class="curwatchlistCard" fxLayoutAlign="center" *ngIf="seasonResult">
+  <mat-card fxFlex="100%">
+    <mat-card-actions (click)="back()" style="cursor: pointer">
+      <mat-icon>arrow_back</mat-icon>
+    </mat-card-actions>
+    <mat-card-title fxLayoutAlign="center">{{episodeDetails.name}}</mat-card-title>
+    <mat-card-content fxLayoutAlign="flex-start">
+      <img height="295px" width="210px" fxFlex.xs="50%" fxFlex="30%" [src]="episodeDetails.image.medium"
+        class="imageMargin">
+      <h2 fxHide.lt-sm [innerHTML]="episodeDetails.summary" class="descStyle"></h2>
+    </mat-card-content>
+    <mat-card>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of seasonResult">
+          <mat-expansion-panel-header (click)="getEpiosdes(item.id)">
+            <mat-panel-title>Season {{item.number}}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-card-content *ngFor="let item of episodeResult; let i=index">
+            <img height="140px" width="250px" [src]="item.image? item.image.medium : 'assets/img/Game_of_Thrones_title_card.jpg'"
+            fxLayoutAlign="flex-start" fxFlex="40%">
+            <span fxFlex="40%" style="padding-left:40px">
+              <h1>{{item.name}}</h1>
+              <h1>Episode : {{item.number ? item.number : "Special"}}</h1>
+            </span>
+            <span fxFlex="20%"><mat-icon #Tick style="cursor: pointer" class="suffixTickIcon" (click)="watched($event)"
+            >check_circle</mat-icon></span>
+          </mat-card-content>
+          <!--<<mat-card>Simple card</mat-card>
+          mat-card>Simple card</mat-card>
+          <mat-card>Simple card</mat-card>
+          <mat-card>Simple card</mat-card>
+          <mat-card>Simple card</mat-card>
+          <mat-card>Simple card</mat-card>
+          <mat-card>Simple card</mat-card>
+          <mat-card>Simple card</mat-card>
+          <mat-card>Simple card</mat-card>
+          <mat-card>Simple card</mat-card>-->
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+  </mat-card>
+</section>

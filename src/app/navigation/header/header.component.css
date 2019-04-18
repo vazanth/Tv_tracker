@@ -1,0 +1,23 @@
+.logo mat-icon{
+    margin-left: 20px;
+    margin-top: 3px;
+}
+
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+a:hover, a:active{
+    color: yellow;
+}
+
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+

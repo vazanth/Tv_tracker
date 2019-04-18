@@ -1,0 +1,57 @@
+<section class="watchlistCard" fxLayoutAlign="center">
+  <mat-card fxFlex="600px" fxFlex.xs="100%">
+    <form (ngSubmit)='Search()' #st=ngForm>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field>
+          <input matInput placeholder="Search" name="searchText" ngModel required>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Search</button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</section>
+<!--<section class="watchlistCard" fxLayoutAlign="center">
+  <mat-card fxFlex="600px" fxFlex.xs="100%">
+    <mat-card-title fxLayoutAlign="center">Game Of Thrones</mat-card-title>
+    <mat-card-content fxLayoutAlign="flex-start">
+      <img fxFlex.xs="100%" src="https://ewedit.files.wordpress.com/2019/03/3498h943ho9p485whp9w34h.jpg" height="200px"
+        width="560px">
+    </mat-card-content>
+    <mat-card-content fxLayoutAlign="center">
+      <mat-form-field>
+        <mat-label>Episode</mat-label>
+        <mat-select>
+          <mat-option value="Epsiode1">Epsiode 1</mat-option>
+          <mat-option value="Epsiode2">Epsiode 2</mat-option>
+          <mat-option value="Epsiode3">Epsiode 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="center">
+      <button mat-raised-button type="submit" (click)="newWatchlist()">Watched</button>
+    </mat-card-actions>
+  </mat-card>
+</section>-->
+<section class="watchlistCard" fxLayoutAlign="center" *ngIf=SearchResult>
+  <div fxFlex="600px" fxFlex.xs="100%">
+    <mat-card fxFlex="50%">
+      <mat-card-content fxLayoutAlign="flex-start">
+        <img height="295px" width="210px" fxFlex.xs="100%" [src]="SearchResult.image.medium" (click)="newWatchlist()"
+          style="cursor: pointer">
+      </mat-card-content>
+      <!-- <mat-card-actions fxLayoutAlign="center">
+      <button mat-raised-button type="submit" (click)="newWatchlist()">Watched</button>
+    </mat-card-actions>-->
+    </mat-card>
+    <mat-card fxFlex="50%">
+      <h4>Name : {{SearchResult.name}}</h4>
+      <h4>Rating :</h4>
+      <div>
+        <mat-progress-spinner [value]="SearchResult.rating.average *10" color="warn">
+        </mat-progress-spinner>
+        <span class="progressSpinner">{{SearchResult.rating.average * 10}}</span>
+      </div>
+      <h4>Genere : {{SearchResult.genres}}</h4>
+    </mat-card>
+  </div>
+</section>

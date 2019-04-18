@@ -1,0 +1,22 @@
+<mat-nav-list>
+    <a *ngIf='!authenticated' mat-list-item [routerLink]="['/login']" (click)='ToggleSidenav()'>
+        <mat-icon>input</mat-icon>
+        <span class="navicon">Login</span>
+    </a>
+    <a *ngIf='!authenticated' mat-list-item [routerLink]="['/signup']" (click)='ToggleSidenav()'>
+        <mat-icon>face</mat-icon>
+        <span class="navicon">Signup</span>
+    </a>
+    <a *ngIf='authenticated' mat-list-item [routerLink]="['/watchlist']" (click)='ToggleSidenav()'>
+        <mat-icon>live_tv</mat-icon>
+        <span class="navicon">Watchlist</span>
+    </a>
+    <mat-list-item>
+        <a *ngIf='authenticated' matLine [routerLink]="['/']" (click)='logout()'>
+            <button mat-icon-button>
+                <mat-icon>eject</mat-icon>
+                <span class="navicon">Logout</span>
+            </button>
+        </a>
+    </mat-list-item>
+</mat-nav-list>

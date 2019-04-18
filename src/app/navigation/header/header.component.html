@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="ToggleNav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div fxFlex>
+        <a [routerLink]="['/']" fxLayout class="logo">
+            <mat-icon fxLayout>tv</mat-icon>
+        </a>
+    </div>
+    <div fxFlex fxLayoutAlign='flex-end' fxHide.lt-sm>
+        <ul fxLayout fxLayoutGap='10px'>
+            <li><a *ngIf='!authenticated' [routerLink]="['/signup']">Signup</a></li>
+            <li><a *ngIf='!authenticated' [routerLink]="['/login']">Login</a></li>
+            <li><a *ngIf='authenticated' [routerLink]="['/watchlist']">Watchlist</a></li>
+            <li><a *ngIf='authenticated' [routerLink]="['/']" (click)="logout()">Logout</a></li>
+        </ul>
+    </div>
+</mat-toolbar>

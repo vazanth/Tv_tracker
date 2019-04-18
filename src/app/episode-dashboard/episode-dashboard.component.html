@@ -1,0 +1,9 @@
+<mat-tab-group *ngIf="!showcurrent">
+  <mat-tab label="New"> 
+      <app-new-watchlist (currentWatch)="showcurrent=true" (SearchedResult)=getSearchedResult($event)></app-new-watchlist>
+  </mat-tab>
+  <mat-tab label="Past">
+      <app-past-watchlist></app-past-watchlist>
+  </mat-tab>
+</mat-tab-group>
+<app-current-watchlist (newWatch)="showcurrent=false" *ngIf="showcurrent" [episodeDetails]="currentEpisodeDetails"></app-current-watchlist>
